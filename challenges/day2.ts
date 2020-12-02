@@ -1,33 +1,32 @@
 export function getValidPasswords(passwords: string[]): string[] {
   return passwords.filter(password => {
-    const passwordsParts = password.split(' ');
+    const [rule, phrase] = password.split(':');
 
-    const passwordMinMax = passwordsParts[0].split('-');
-    const ruleLetter = passwordsParts[1].slice(0, -1);
-    const passwordLetters = passwordsParts[2].split('');
+    const [ruleMinMax, ruleLetter] = rule.split(' ');
+    
+    const [minOccurences, maxOccurences] = ruleMinMax.split('-')
 
-    const minOccurences = +passwordMinMax[0];
-    const maxOccurences = +passwordMinMax[1];
+    const passwordLetters = phrase.split('');
 
     const numberOfOccurences = passwordLetters.filter(letter => letter == ruleLetter).length;
 
-    return numberOfOccurences >= minOccurences && numberOfOccurences <= maxOccurences;
+    return numberOfOccurences >= parseInt(minOccurences) && numberOfOccurences <= parseInt(maxOccurences);
   })
 }
 
 export function getValidPasswordsBasedOnPosition(passwords: string[]): string[] {
   return passwords.filter(password => {
-    const passwordsParts = password.split(' ');
+    const [rule, phrase] = password.split(':');
 
-    const rules = passwordsParts[0].split('-');
-    const ruleLetter = passwordsParts[1].slice(0, -1);
-    const passwordLetters = passwordsParts[2].split('');
+    const [rulePositions, ruleLetter] = rule.split(' ');
 
-    const rulePosition1 = +rules[0] - 1;
-    const rulePosition2 = +rules[1] - 1;
+    const [rulePosition1, rulePosition2] = rulePositions.split('-')
 
-    const letter1 = passwordLetters[rulePosition1];
-    const letter2 = passwordLetters[rulePosition2];
+    const passwordLetters = phrase.split('');
+
+    // no need to remove 1 from position as password was not trimmed
+    const letter1 = passwordLetters[parseInt(rulePosition1)];
+    const letter2 = passwordLetters[parseInt(rulePosition2)];
 
     return (letter1 == ruleLetter) !== (letter2 == ruleLetter);
   })
