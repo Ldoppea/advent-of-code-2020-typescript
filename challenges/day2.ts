@@ -16,7 +16,7 @@ export function getValidPasswords(passwords: string[]): string[] {
 
 export function getValidPasswordsBasedOnPosition(passwords: string[]): string[] {
   return passwords.filter(password => {
-    const [rule, phrase] = password.split(':');
+    const [rule, phrase] = password.split(': ');
 
     const [rulePositions, ruleLetter] = rule.split(' ');
 
@@ -24,9 +24,8 @@ export function getValidPasswordsBasedOnPosition(passwords: string[]): string[] 
 
     const passwordLetters = phrase.split('');
 
-    // no need to remove 1 from position as password was not trimmed
-    const letter1 = passwordLetters[parseInt(rulePosition1)];
-    const letter2 = passwordLetters[parseInt(rulePosition2)];
+    const letter1 = passwordLetters[parseInt(rulePosition1) - 1];
+    const letter2 = passwordLetters[parseInt(rulePosition2) - 1];
 
     return (letter1 == ruleLetter) !== (letter2 == ruleLetter);
   })
