@@ -2,7 +2,7 @@ import {findTheTwoEntriesThatSumTo2020, findTheThreeEntriesThatSumTo2020} from "
 import day1Sample from "../data/day1-sample.json";
 import day1Input from "../data/day1-input.json";
 
-describe('day one part 1', () => {
+describe('day 1 part 1', () => {
     it('compute result for sample', () => {
         const result = findTheTwoEntriesThatSumTo2020(day1Sample)
         expect(result).toEqual([1721, 299])
@@ -20,7 +20,7 @@ describe('day one part 1', () => {
     })
 });
 
-describe('day one part 2', () => {
+describe('day 1 part 2', () => {
     it('return result for sample', () => {
         const result = findTheThreeEntriesThatSumTo2020(day1Sample)
         expect(result).toEqual([675, 979, 366])

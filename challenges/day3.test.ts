@@ -1,7 +1,7 @@
 import {countNumberOfTrees, countNumberOfThreesForEachSlopes} from "./day3";
 import { readLines } from '../helpers/file-reader';
 
-describe('day one part 1', () => {
+describe('day 3 part 1', () => {
     it('compute result for sample', () => {
         const daySample = readLines('./data/day3-sample.txt');
         const result = countNumberOfTrees(daySample)
@@ -15,7 +15,7 @@ describe('day one part 1', () => {
     })
 });
 
-describe('day one part 2', () => {
+describe('day 3 part 2', () => {
     it('compute result for sample', () => {
         const daySample = readLines('./data/day3-sample.txt');
         const result = countNumberOfThreesForEachSlopes(daySample)
