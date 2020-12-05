@@ -9,7 +9,7 @@ const isYearValid = (minYear: number, maxYear: number) => (value: string) : bool
 }
 
 const isHeightInRange = (value: string, minHeight: number, maxHeight: number): boolean => {
-  const heightString = value.slice(0, -2); //?
+  const heightString = value.slice(0, -2);
   const height = parseInt(heightString);
 
   return height >= minHeight && height <= maxHeight;
