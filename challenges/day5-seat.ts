@@ -46,8 +46,7 @@ export class Seat {
   }
 
   getUpperHalf(range: [number, number]): [number, number] {
-    const min = range[0];
-    const max = range[1];
+    const [min, max] = range;
 
     const middle = min + Math.ceil((max - min) / 2);
 
@@ -55,8 +54,7 @@ export class Seat {
   }
 
   getLowerHalf(range: [number, number]): [number, number] {
-    const min = range[0];
-    const max = range[1];
+    const [min, max] = range;
     
     const middle = min + Math.floor((max - min) / 2);
 
