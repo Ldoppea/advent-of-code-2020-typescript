@@ -48,12 +48,11 @@ const isPasspordValidWithRules = (passport: Passport): boolean => {
   return isPasspordValid(passport) && passport.items.every(isFieldValid);
 }
 
-const countValidPassports = (input: string[], validator: (passport: Passport) => boolean): number => {
+type Validator = (passport: Passport) => boolean;
+const countValidPassports = (input: string[], validator: Validator): number => {
   const passports = extractPasswords(input);
 
-  const validPassports = passports.filter(passport => validator(passport));
-
-  return validPassports.length;
+  return passports.filter(validator).length;
 }
 
 export function countValidPassportsWithoutRules(input: string[]): number {
