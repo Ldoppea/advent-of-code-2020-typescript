@@ -7,13 +7,6 @@ export class Seat {
 
   constructor(seatCode: string) {
     this.seatCode = seatCode;
-    this.row = 0;
-    this.column = 0;
-    this.id = 0;
-    this.extractSeatData(seatCode);
-  }
-  
-  extractSeatData(seatCode: string) {
     this.row = this.getSeatRow(seatCode);
     this.column = this.getSeatColumn(seatCode);
     this.id = this.row * 8 + this.column;
