@@ -43,5 +43,5 @@ const countSubBagsRecursive = (bagColor: string, bagRules: BagRule[]) : number =
 export function countBagsInsideShinyGold(input: string[]): number {
   const bagRules = parseRules(input);
 
-  return countSubBagsRecursive(SHINY_GOLD, bagRules); //?
+  return countSubBagsRecursive(SHINY_GOLD, bagRules);
 }
