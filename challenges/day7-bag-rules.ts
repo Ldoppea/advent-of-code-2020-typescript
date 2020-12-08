@@ -18,6 +18,25 @@ export class BagRule {
   }
 }
 
+export function parseRuleRegex(rule: string): BagRule {
+  const bagRegex = '([\\w\\s]+) bags contain';
+  const contentRegex = '(?:(?:([0-9]+) ([\\w\\s]+)) bags*[\\,\\.])*';
+  const fullRegex = `${bagRegex} ${contentRegex}\\s*${contentRegex}\\s*${contentRegex}\\s*${contentRegex}`;
+
+  const [_, bagColor, ...subBags] = rule.match(fullRegex)!;
+
+  const bagContents = [];
+  for(let i = 0; i < subBags.length; i += 2) {
+    if(subBags[i] !== undefined) {
+      const count = parseInt(subBags[i]);
+      const color = subBags[i + 1];
+      bagContents.push(new BagContent(color, count))
+    }
+  }
+
+  return new BagRule(bagColor, bagContents);
+}
+
 export function parseRule(rule: string): BagRule {
   const ruleWithoutBagWord = rule.replace(/ bags*/g, '').replace(/\./g,'');
   const [bagColor, content] = ruleWithoutBagWord.split(' contain ');
@@ -35,6 +54,10 @@ export function parseRule(rule: string): BagRule {
   }
 
   return new BagRule(bagColor, subBagsRules);
+}
+
+export function parseRulesRegex(rules: string[]): BagRule[] {
+  return rules.map(rule => parseRuleRegex(rule));
 }
 
 export function parseRules(rules: string[]): BagRule[] {

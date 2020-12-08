@@ -1,5 +1,5 @@
 import { countBagsContainingShinyGold, countBagsInsideShinyGold } from "./day7";
-import { BagContent, parseRule } from "./day7-bag-rules";
+import { BagContent, parseRule, parseRules, parseRulesRegex } from "./day7-bag-rules";
 import { readLines } from '../helpers/file-reader';
 
 describe('day 7 part 1', () => {
@@ -13,6 +13,19 @@ describe('day 7 part 1', () => {
         const dayInput = readLines('./data/day7-input.txt');
         const result = countBagsContainingShinyGold(dayInput);
         expect(result).toEqual(272);
+    })
+
+    it('timing test for classic version', () => {
+        const dayInput = readLines('./data/day7-input.txt');
+        for(let i = 0; i < 1000; i++) {
+            const result = parseRules(dayInput); //?.
+        }
+    })
+    it('timing test for regex version', () => {
+        const dayInput = readLines('./data/day7-input.txt');
+        for(let i = 0; i < 1000; i++) {
+            const result = parseRulesRegex(dayInput); //?.
+        }
     })
 
     it('compute row for light red bags', () => {
