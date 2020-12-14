@@ -11,3 +11,7 @@ export function pgcd(a: number, b: number): number {
 export function ppcm (a: number, b: number): number {
   return a * b / pgcd(a, b);
 }
+
+export function sum (numbers: number[]): number {
+  return numbers.reduce((total, current) => total + current, 0);
+}
