@@ -15,3 +15,7 @@ export function ppcm (a: number, b: number): number {
 export function sum (numbers: number[]): number {
   return numbers.reduce((total, current) => total + current, 0);
 }
+
+export function multiply (numbers: number[]): number {
+  return numbers.reduce((total, current) => total * current, 1);
+}
