@@ -1,9 +1,15 @@
 import { readFileSync } from 'fs';
 
 export function readLines(filePath: string): string[] {
-  let test = readFileSync(filePath, 'utf-8');
-  let test2 = test.split('\n');
+  let fileContent = readFileSync(filePath, 'utf-8');
+  let fileLines = fileContent.split('\n');
 
-  return test2;
+  return fileLines;
+}
+
+export function readFile(filePath: string): string {
+  let fileContent = readFileSync(filePath, 'utf-8');
+
+  return fileContent;
 }
   
