@@ -69,7 +69,7 @@ export function playGameRecursive(gameDecks: Decks): Decks {
 
     rounds.add(currentRoundString);
 
-    const shouldRecurseGame = player1card < localDeck1.length && player2card < localDeck2.length;
+    const shouldRecurseGame = player1card <= localDeck1.length && player2card <= localDeck2.length;
     if (shouldRecurseGame) {
       const subDeck1 = localDeck1.slice(0, player1card);
       const subDeck2 = localDeck2.slice(0, player2card);
