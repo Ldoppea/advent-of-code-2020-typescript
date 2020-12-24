@@ -19,3 +19,7 @@ export function sum (numbers: number[]): number {
 export function multiply (numbers: number[]): number {
   return numbers.reduce((total, current) => total * current, 1);
 }
+
+export function isEven (x: number): boolean {
+  return x % 2 === 0;
+}
